@@ -36,11 +36,12 @@ jobs:
         python -m pip install --upgrade pip
         if [ -f requirements.txt]; then pip install -r requirements.txt; fi
         pip install pytest
+
      - name: discord
        uses: sebastianpopp/discord-action@releases/v2
        with:
-         webhook: ${{ secrets.GIT }}
-         message: ${{ github.repository }} is finally deployed.
+        webhook: ${{ secrets.GIT }}
+        message: ${{ github.repository }} is finally deployed.
           
      - name: Deploy to Github Pages
        uses: peaceiris/actions-gh-pages@v3
