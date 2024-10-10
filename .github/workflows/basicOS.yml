@@ -6,31 +6,50 @@ on:
     branches: [main]
 jobs: 
   builds:
-    runs-on: Ubuntu-20.04
+    runs-on: ubuntu-latest
+    
 
     steps: 
 
+     - name: greeting steps
+       run:
+        echo "Hi I am learning git"
+           
+     - name: Checkout my codes
+       uses: actions/checkout@v4
+     - name: print content 
+       run: 
+         ls 
+
     # this is where i install python
-    - name: Installing python
-      uses: actions/setup-python@v5
-      with:
+     - name: Installing python
+       uses: actions/setup-python@v5
+       with:
         python-version: '3.10'
-    - name: check version of python 
-      run: 
+     - name: check version of python 
+       run: 
          python --version 
 
     # installing dependencies if any
-    - name: Install dependencies
-      run: |
+     - name: install dependencies
+       run: |
         python -m pip install --upgrade pip
-        pip install html5lib beautifulsoup4
-    - name: discord
-      uses: sebastianpopp/discord-action@releases/v2
-      with:
-           webhook: ${{ secrets.SECRET }}
+        if [ -f requirements.txt]; then pip install -r requirements.txt; fi
+        pip install pytest
+
+    # begin test #
+     - name: Begin test 
+       run: |
+        pytest
+
+    # this is where i install python
+     - name: discord
+       uses: sebastianpopp/discord-action@releases/v2
+       with:
+           webhook: ${{ secrets.SECRET2 }}
            message: hello all, ${{ github.repository }} has been successfullly deployed.
-    - name: Deploy to Github Pages
-      uses: peaceiris/actions-gh-pages@v3
-      with:
+     - name: Deploy to Github Pages
+       uses: peaceiris/actions-gh-pages@v3
+       with:
         github_token: ${{ secrets.SECRET }}
         publish_dir: ./  
