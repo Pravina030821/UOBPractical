@@ -47,4 +47,4 @@ jobs:
        uses: sebastianpopp/discord-action@releases/v2
        with:
         webhook: ${{ secrets.GIT2 }}
-        message: ${{ github.repository }} is finally deployed.
+        message: ${{ github.repository }} is finally deployed. https://pravina030821.github.io/UOBPractical/ 
