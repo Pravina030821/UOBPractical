@@ -42,3 +42,9 @@ jobs:
        with:
         github_token: ${{ secrets.SECRET }}
         publish_dir: ./  
+        
+     - name: discord
+       uses: sebastianpopp/discord-action@releases/v2
+       with:
+        webhook: ${{ secrets.GIT }}
+        message: ${{ github.repository }} is finally deployed.
