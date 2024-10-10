@@ -1,1 +1,16 @@
+name: MyWorkflow file 
 
+on:
+  pull_request:
+  push:
+    branches: [main]
+jobs: 
+  builds:
+    runs-on: Ubuntu-20.04
+
+    steps: 
+    - name: Deploy to Github Pages
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./ 
