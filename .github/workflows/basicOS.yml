@@ -1,4 +1,4 @@
-name: MyWorkflow file 
+name: Practical File 
 
 on:
   pull_request:
@@ -48,6 +48,7 @@ jobs:
        with:
            webhook: ${{ secrets.SECRET2 }}
            message: hello all, ${{ github.repository }} has been successfullly deployed.
+          
      - name: Deploy to Github Pages
        uses: peaceiris/actions-gh-pages@v3
        with:
