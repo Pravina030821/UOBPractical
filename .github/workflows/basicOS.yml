@@ -42,7 +42,6 @@ jobs:
        run: |
         pytest
 
-    # this is where i install python
      - name: discord
        uses: sebastianpopp/discord-action@releases/v2
        with:
